@@ -16,15 +16,18 @@ const Menu = () => {
   ];
 
   const handleSearchChange = (event) => {
-    setSearch(event.target.value);
+    const searchText = event.target.value;
+    setSearch(searchText);
 
-    const filteredMovies = data.filter((movie) =>
-      movie.title.toLowerCase().includes(event.target.value.toLowerCase())
-    );
-
-    setResults(filteredMovies);
+    if (searchText === '') {
+      setResults([]);
+    } else {
+      const filteredMovies = data.filter((movie) =>
+        movie.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setResults(filteredMovies);
+    }
   };
-
   const handleMovieClick = (url) => {
     setIframeUrl(url);
   };
@@ -33,7 +36,7 @@ const Menu = () => {
     const handleClickOutside = (event) => {
       if (resultsRef.current && !resultsRef.current.contains(event.target)) {
         setResults([]);
-        setSearch(''); // Limpa a pesquisa
+        setSearch('');
       }
     };
 

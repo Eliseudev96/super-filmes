@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <MovieContext.Provider value={{ iframeUrl, setIframeUrl }}>
-      <div>
+      <div className='app-container'>
         <header>
           <Menu />
         </header>
