@@ -14,6 +14,11 @@ const App = () => {
         <header>
           <Menu />
         </header>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7267895515560863'
+          crossorigin='anonymous'
+        ></script>
         <Analytics />
         <MovieList />
       </div>
