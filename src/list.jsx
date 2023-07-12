@@ -22,7 +22,7 @@ const MovieCard = ({ src, title, description, iframeUrl }) => {
 };
 
 const MovieList = () => {
-  const [iframeUrl, setIframeUrl] = useState('');
+  const { iframeUrl, setIframeUrl } = useContext(MovieContext);
   const [page, setPage] = useState(0);
   const closeModal = () => setIframeUrl('');
   const moviesPerPage = 12;
@@ -40,7 +40,7 @@ const MovieList = () => {
   };
 
   return (
-    <MovieContext.Provider value={{ iframeUrl, setIframeUrl }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div className='movie-list'>
         {data
           .slice(page * moviesPerPage, (page + 1) * moviesPerPage)
@@ -53,33 +53,33 @@ const MovieList = () => {
               iframeUrl={movie.iframeUrl}
             />
           ))}
-        {iframeUrl && (
-          <div className='modal'>
-            <button onClick={closeModal}>Close</button>
-            <iframe
-              id='EmbedderContainer'
-              src={iframeUrl}
-              width='100%'
-              height='100%'
-              frameborder='0'
-              title='movie'
-              allowFullScreen
-            />
-          </div>
-        )}
-        <div className='pagination'>
-          <button onClick={prevPage} disabled={page === 0}>
-            Previous
-          </button>
-          <button
-            onClick={nextPage}
-            disabled={(page + 1) * moviesPerPage >= data.length}
-          >
-            Next
-          </button>
-        </div>
       </div>
-    </MovieContext.Provider>
+      {iframeUrl && (
+        <div className='modal'>
+          <button onClick={closeModal}>Close</button>
+          <iframe
+            id='EmbedderContainer'
+            src={iframeUrl}
+            width='100%'
+            height='100%'
+            frameborder='0'
+            title='movie'
+            allowFullScreen
+          />
+        </div>
+      )}
+      <div className='pagination'>
+        <button onClick={prevPage} disabled={page === 0}>
+          Previous
+        </button>
+        <button
+          onClick={nextPage}
+          disabled={(page + 1) * moviesPerPage >= data.length}
+        >
+          Next
+        </button>
+      </div>
+    </div>
   );
 };
 

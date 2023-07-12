@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { MovieContext } from './MovieContext';
 import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Menu from './menu';
-import MovieImage from './list';
+import MovieList from './list';
+
 const App = () => {
+  const [iframeUrl, setIframeUrl] = useState('');
+
   return (
-    <div>
-      <header>
-        <Menu />
-      </header>
-      <Analytics />
-      <MovieImage />
-    </div>
+    <MovieContext.Provider value={{ iframeUrl, setIframeUrl }}>
+      <div>
+        <header>
+          <Menu />
+        </header>
+        <Analytics />
+        <MovieList />
+      </div>
+    </MovieContext.Provider>
   );
 };
 
