@@ -19,15 +19,6 @@ const App = () => {
           src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7267895515560863'
           crossorigin='anonymous'
         ></script>
-        <ins
-          class='adsbygoogle'
-          style='display:block'
-          data-ad-client='ca-pub-7267895515560863'
-          data-ad-slot='1981352116'
-          data-ad-format='auto'
-          data-full-width-responsive='true'
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         <Analytics />
         <MovieList />
       </div>
