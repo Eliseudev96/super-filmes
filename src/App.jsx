@@ -20,6 +20,7 @@ const App = () => {
           crossorigin='anonymous'
         ></script>
         <Analytics />
+        
         <MovieList />
       </div>
     </MovieContext.Provider>
