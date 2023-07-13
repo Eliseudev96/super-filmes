@@ -23,6 +23,10 @@ const App = () => {
           type='text/javascript'
           src='//pl20040876.highwaycpmrevenue.com/73/28/11/732811c6c6afcb41c45722b48bb407d8.js'
         ></script>
+        <script
+          type='text/javascript'
+          src='//pl20040936.highwaycpmrevenue.com/36/4a/7d/364a7dcd2cfac2e791b464b20cd412fd.js'
+        ></script>
         <Analytics />
         <MovieList />
       </div>
