@@ -48,6 +48,10 @@ const Menu = () => {
 
   return (
     <nav>
+      <script
+        type='text/javascript'
+        src='//pl20040876.highwaycpmrevenue.com/73/28/11/732811c6c6afcb41c45722b48bb407d8.js'
+      ></script>
       <ul>
         {menuItems.map((menuItem, index) => (
           <li key={index}>
