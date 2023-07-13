@@ -12,6 +12,10 @@ const App = () => {
     <MovieContext.Provider value={{ iframeUrl, setIframeUrl }}>
       <div className='app-container'>
         <header>
+          <script
+            type='text/javascript'
+            src='https://cdn.diclotrans.com/sdk/v1/17302/e27e891ef85e2616af4f8d55873ac5c992400d0f/lib.js'
+          ></script>
           <Menu />
         </header>
         <script
@@ -20,7 +24,7 @@ const App = () => {
           crossorigin='anonymous'
         ></script>
         <Analytics />
-        
+
         <MovieList />
       </div>
     </MovieContext.Provider>
