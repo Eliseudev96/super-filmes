@@ -129,3 +129,50 @@
   background: #0056b3;
 }
 
+.skeleton-movie-card {
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #dbdbdb;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-image {
+  flex: 2;
+  background: #c4c4c4;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-description {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.skeleton-title, .skeleton-details {
+  height: 20px;
+  width: 80%;
+  background: #c4c4c4;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #c4c4c4;
+  }
+  50% {
+    background-color: #dbdbdb;
+  }
+  100% {
+    background-color: #c4c4c4;
+  }
+}
+
+

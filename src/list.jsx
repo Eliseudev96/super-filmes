@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { MovieContext } from './MovieContext';
 import data from './data.json';
 import './list.css';
@@ -21,9 +21,22 @@ const MovieCard = ({ src, title, description, iframeUrl }) => {
   );
 };
 
+const SkeletonMovieCard = () => {
+  return (
+    <div className='skeleton-movie-card'>
+      <div className='skeleton-image' />
+      <div className='skeleton-description'>
+        <div className='skeleton-title'></div>
+        <div className='skeleton-details'></div>
+      </div>
+    </div>
+  );
+};
+
 const MovieList = () => {
   const { iframeUrl, setIframeUrl } = useContext(MovieContext);
   const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const closeModal = () => setIframeUrl('');
   const moviesPerPage = 12;
 
@@ -39,20 +52,30 @@ const MovieList = () => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div className='movie-list'>
-        {data
-          .slice(page * moviesPerPage, (page + 1) * moviesPerPage)
-          .map((movie, index) => (
-            <MovieCard
-              key={index}
-              src={movie.src}
-              title={movie.title}
-              description={movie.description}
-              iframeUrl={movie.iframeUrl}
-            />
-          ))}
+        {isLoading
+          ? Array(moviesPerPage)
+              .fill()
+              .map((_, index) => <SkeletonMovieCard key={index} />)
+          : data
+              .slice(page * moviesPerPage, (page + 1) * moviesPerPage)
+              .map((movie, index) => (
+                <MovieCard
+                  key={index}
+                  src={movie.src}
+                  title={movie.title}
+                  description={movie.description}
+                  iframeUrl={movie.iframeUrl}
+                />
+              ))}
       </div>
       {iframeUrl && (
         <div className='modal'>
